@@ -12,27 +12,18 @@ The project will investigate whether machine-learning classification can predict
 
 **Sample classification task, with time-aware prediction:**
 
-Current time: 12:00
+Current time: 12:00 ↓
 
-Information available at 12:00
+Information available at 12:00 ↓
 
-        ↓
-        
 CO, NO₂, NOx, benzene, temperature,
-humidity, 
+humidity, previous measurements, 
+time features ↓
 
-previous measurements, time features
+Model ↓
 
-        ↓
-        
-       MODEL
-       
-        ↓
-        
-Predicted category at 13:00
+Predicted category at 13:00 ↓
 
-        ↓
-        
 GOOD / MODERATE / POOR/
 
 ### Project Structure
@@ -77,15 +68,17 @@ GCS: raw/air_quality.csv
 
   Train/Dev/Test
 
-8-fold stratified cross-val.
+ Cross Validation
 
    GCS: sharded
 
-Model training/eval./testing
+Model training/evaluation/testing
 
-### Requirements
+### Requirements and Setup
 
-The project can be reproduced using a standard Python virtual environment, .venv.
+The project can be reproduced using a Python virtual environment, first clone the repository:
+
+   git clone <https://github.com/ChloeKC/healthyair>
 
 **Software**
 
@@ -112,36 +105,64 @@ gcsfs
 
 ### Option 1 — Python Virtual Environment
 
+1. Open a terminal in the project folder:
 
-1. Clone the repository
-git clone <https://github.com/ChloeKC/healthyair>
-cd healthyair
+   cd healthyair
 
-2. Create a virtual environment
-python -m venv .venv
+2. Create a virtual environment:
 
-3. Activate the environment
-.venv\Scripts\Activate.ps1
-or
-source .venv/bin/activate
+   python -m venv .venv
 
-4. Upgrade pip
-python -m pip install --upgrade pip
+3. Activate the environment:
 
-5. Install project dependencies
-pip install -r requirements.txt
+   .venv\Scripts\Activate.ps1
+   or
+   source .venv/bin/activate
 
-6. Start JupyterLab
-jupyter lab
+4. Install project requirements:
+
+   pip install -r requirements.txt
+
+5. Start JupyterLab
+
+   jupyter lab
 
 
 ### Option 2 — Conda
 
-conda env create -f environment.yml
+1. Create the environment, if the healthy_air environment does not already exist
 
-conda activate healthy_air
+   conda env create -f environment.yml
 
-jupyter lab
+2. Activate the environment
+
+   conda activate healthy_air
+
+3. Open the cloned project folder
+
+   cd ….
+
+4. Register the Jupyter kernel
+
+   python -m ipykernel install --user --name healthy_air --display-name "Python (HealthyAir)"
+
+5. Start JupyterLab
+
+   jupyter lab
+
+6. Select the kernel
+
+   In JupyterLab, select: Python (HealthyAir)
+   
+8. Verify the environment
+
+   Run in a notebook cell:
+   
+   import sys
+   
+   print(sys.executable)
+
+The path should point to the healthy_air Conda environment.
 
 
 **Conda environment:**
@@ -171,7 +192,7 @@ For local development, Google Cloud Application Default Credentials can be confi
 
 gcloud auth login
 
-gcloud config set project YOUR_PROJECT_ID
+gcloud config set project healthy-air-analysis
 
 gcloud auth application-default login
 
@@ -179,7 +200,7 @@ gcloud services enable storage.googleapis.com
 
 Google Cloud CLI (gcloud) is installed separately from Python and is not installed through requirements.txt.
 
-Users who need to access the cloud-based pipeline authenticate using their Google Cloud account.
+To access the cloud-based pipeline authenticate use Google Cloud account.
 
 gcloud auth application-default login
 
@@ -194,17 +215,17 @@ gs://BUCKET/
 
 ├── raw/
 
-│   └── uci-air-quality/
+│   ── uci-air-quality/
 
-│       └── v1/
+│       ── v1/
 
-│           └── AirQualityUCI.csv
+│           ── AirQualityUCI.csv
 
 └── processed/
 
-    └── v1/
+|         ── v1/
     
-        └── airquality.parquet
+|         ── airquality.parquet (.csv for milestone 1)
 
 
 ### Running the Project
@@ -254,12 +275,7 @@ User
    ├── Access HealthyAir GCS bucket
 
    └── Run pipeline
-
-       Raw → Clean → Features
-             ↓
-       Train → Validate → Test
-             ↓
-          Results
+   
 
 ## Milestone 1
 
@@ -267,9 +283,7 @@ User
 
 ### Process/Pipeline:
 
-UCI Air Quality Dataset
-
-          ↓
+UCI Air Quality Dataset 
       Raw data
       
           ↓
