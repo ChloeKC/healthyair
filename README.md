@@ -12,27 +12,18 @@ The project will investigate whether machine-learning classification can predict
 
 **Sample classification task, with time-aware prediction:**
 
-Current time: 12:00
+Current time: 12:00 ↓
 
-Information available at 12:00
+Information available at 12:00 ↓
 
-        ↓
-        
 CO, NO₂, NOx, benzene, temperature,
-humidity, 
+humidity, previous measurements, 
+time features ↓
 
-previous measurements, time features
+Model ↓
 
-        ↓
-        
-       MODEL
-       
-        ↓
-        
-Predicted category at 13:00
+Predicted category at 13:00 ↓
 
-        ↓
-        
 GOOD / MODERATE / POOR/
 
 ### Project Structure
