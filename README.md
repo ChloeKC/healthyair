@@ -259,6 +259,8 @@ requirements.txt — users using standard Python and venv
 
 environment.yml — setup for users using Conda, etc.
 
+python data_storage_gcs.py - for google cloud storage setup
+
 ### Overall Shell User Guide 
 
 User

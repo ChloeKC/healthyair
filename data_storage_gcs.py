@@ -55,7 +55,7 @@ def create_gcs_bucket(BUCKET_NAME, PROJECT_ID, LOCATION):
 
 create_gcs_bucket(BUCKET_NAME, PROJECT_ID, LOCATION)
 
-def upload_to_gcs(healthy-air-analysis-data, source_file_name, destination_blob_name):
+def upload_to_gcs(BUCKET_NAME, source_file_name, destination_blob_name):
     """Upload a local file to a GCS object path."""
     client = storage.Client()
     bucket = client.bucket(BUCKET_NAME)
