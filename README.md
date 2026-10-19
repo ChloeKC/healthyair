@@ -32,21 +32,21 @@ healthyair/
 
 ── data/
 
-|   ── README.md
+   ── README.md
 
 ── notebooks/
 
-|   ── data_exploration.ipynb
+   ── data_exploration.ipynb
    
-|   ── data_cleaning.ipynb
+   ── data_cleaning.ipynb
    
-|   ── model_training.ipynb
+   ── model_training.ipynb
 
 ── src/
-|  ── ...
+  ── ...
 
 ── models/
-|  ── ...
+  ── ...
 
 ── environment.yml
 
@@ -130,7 +130,7 @@ gcsfs
 
 ### Option 2 — Conda
 
-1. Create the environment, if the healthy_air environment does not already exist
+1. Create healthy_air environment
 
    conda env create -f environment.yml
 
@@ -140,7 +140,7 @@ gcsfs
 
 3. Open the cloned project folder
 
-   cd ….
+   cd ... 
 
 4. Register the Jupyter kernel
 
@@ -154,7 +154,7 @@ gcsfs
 
    In JupyterLab, select: Python (HealthyAir)
    
-8. Verify the environment
+8. Verify environment
 
    Run in a notebook cell:
    
@@ -186,8 +186,6 @@ Google Cloud Storage (GCS)
 
 BigQuery
 
-Google Cloud authentication is separate from the Python environment.
-
 For local development, Google Cloud Application Default Credentials can be configured using:
 
 gcloud auth login
@@ -198,7 +196,7 @@ gcloud auth application-default login
 
 gcloud services enable storage.googleapis.com
 
-Google Cloud CLI (gcloud) is installed separately from Python and is not installed through requirements.txt.
+Google Cloud CLI (gcloud) is installed separately from Python and not installed through requirements.txt.
 
 To access the cloud-based pipeline authenticate use Google Cloud account.
 
@@ -302,9 +300,9 @@ UCI Air Quality Dataset
 
 ### Dataset and Code
 
-The UCI Air Quality Dataset  contains hourly air-quality and environmental measurements, including CO, NO₂, NOx, benzene, temperature, relative humidity and absolute humidity. The chronological ordering will be retained because the data represents time series records which will be important to maintain for the future prediction task.
+The UCI Air Quality Dataset  contains hourly air-quality and environmental measurements, including CO, NO₂, NOx, benzene, temperature, relative humidity and absolute humidity. The chronological ordering will be retained because the data represents time series records which will be important to maintain for future prediction tasks.
 
-The final preprocessing, target-label definition, feature engineering and machine-learning approach will be investigated in a later milestone. I will consider whether the data is best used for historical air-quality classification or prediction of a future air-quality category from previous observations.
+The final preprocessing, target-label definition, feature engineering and machine-learning approach will be investigated in a later milestone. I will consider whether the data is best used for historical air-quality classification or prediction of a future air-quality category.
 
 The dataset will be stored as raw data and retained unchanged. The raw dataset will be retained separately from processed datasets so that the processing steps can be reproduced. Google Cloud Storage will be used for object storage, with clear paths/versioning for the raw and processed data. Python scripts/notebooks will document the data acquisition, storage and splitting procedures.
 
@@ -362,7 +360,7 @@ Detailed ML analysis: More detailed analysis, including feature engineering, mod
 
 During Milestone 2, a preprocessing notebook will clean the data, investigate the creation of target labels as the final target label methodology has not yet been fixed. Then I can determine whether the focus will be on historical classification or prediction of a future air-quality category using recent observations.
 
-Cleaning/category creation will be supplied in notebooks or Python scripts in src/, with procedures for missing values, invalid measurements, feature construction and category thresholds. The focus of Milestone 1 is therefore on data acquisition, raw data storage, reproducible data splitting and storage of the resulting datasets, providing a foundation for the subsequent preprocessing and machine-learning stages.
+Cleaning/category creation will be supplied in notebooks or Python scripts in src/, with procedures for missing values, invalid measurements, feature construction and category thresholds. The focus of Milestone 1 is therefore on data acquisition, raw data storage, reproducible data splitting and storage of resulting datasets, providing a foundation for later preprocessing and machine-learning stages.
 
 Stored data
 
