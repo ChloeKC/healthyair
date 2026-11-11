@@ -57,31 +57,57 @@ Model-Ready Dataset
 ### Project Structure
 
 healthyair/
+
 │
+
 ├── data/
+
 │   ├── raw/
+
 │   ├── processed/
+
 │   └── features/
+
 │
+
 ├── notebooks/
+
 │   ├── 01_data_exploration.ipynb
+
 │   ├── 02_data_cleaning.ipynb
+
 │   └── 03_feature_engineering.ipynb
+
 │
+
 ├── src/
+
 │   ├── data_load_gcs.py
+
 │   ├── data_quality.py
+
 │   └── data_storage_gcs.py
+
 │
+
 ├── reports/
+
 │   ├── milestone1.pdf
+
 │   └── milestone2.pdf
+
 │
+
 ├── tests/
+
 │
+
 ├── environment.yml
+
 ├── requirements.txt
+
 ├── README.md
+
 └── .gitignore
 
 ### Requirements and Setup
