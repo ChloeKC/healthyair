@@ -127,6 +127,7 @@ Git
 JupyterLab
 
 **Python libraries**
+
 NumPy
 Pandas
 Matplotlib
@@ -137,6 +138,14 @@ IPykernel
 Google Cloud Storage
 Google Cloud BigQuery
 gcsfs
+
+Python: 3.12.3
+NumPy: 2.5.3
+pandas: 3.0.6
+SciPy: 1.18.1
+Matplotlib: 3.11.1
+Seaborn: 0.13.2
+statsmodels: 0.15.0
 
 
 ### Option 1 — Python Virtual Environment
