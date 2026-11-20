@@ -23,7 +23,7 @@ print("Google Cloud Storage imported successfully")
 # ---------------------------------------------------------------------
 
 PROJECT_ID = "healthy-air-analysis"
-BUCKET_NAME = "uci_air_quality"
+BUCKET_NAME = "uci_air_quality_20119102"
 LOCATION = "EU"
 
 print(f"Project: {PROJECT_ID}")
@@ -37,19 +37,14 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 RAW_FILE = PROJECT_ROOT / "data_raw" / "AirQualityUCI.csv"
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 
-RAW_GCS_PATH = "/uci-air-quality/v1/AirQualityUCI.csv"
+RAW_GCS_PATH = "/uci-air-quality_20119102/v1/AirQualityUCI.csv"
 PROCESSED_GCS_PATH = "processed/v1/"
 
 print("Raw data path:", RAW_GCS_PATH)
 print("Processed data prefix:", PROCESSED_GCS_PATH)
 
 LOCAL_FILE = "../data/raw/AirQualityUCI.csv"
-GCS_FILE = "raw/uci-air-quality/v1/AirQualityUCI.csv"
-
-df = pd.read_csv(LOCAL_RAW_PATH)
-
-print("Dataset shape:", df.shape)
-display(df.head())
+GCS_FILE = "raw/uci-air-quality_20119102/v1/AirQualityUCI.csv"
 
 # Google Cloud Storage functions
 # ---------------------------------------------------------------------
@@ -175,10 +170,11 @@ def create_chronological_splits(
     # The UCI dataset uses -200 as a missing-value marker.
     df_split["NO2(GT)"] = df_split["NO2(GT)"].replace(-200, np.nan)
 
-    # Drop NANs and nsure chronological order
+    # Drop NANs and ensure chronological order
     df_split = (
         df_split.dropna(subset=["Datetime"])
         .sort_values("Datetime").reset_index(drop=True)
+    )
 
     if df_split["Datetime"].duplicated().any():
         raise ValueError(
@@ -303,3 +299,6 @@ def create_chronological_splits(
     print(f"\nGenerated {len(cv_folds)} cross-validation folds.")
 
     return train_df, eval_df, test_df, cv_folds
+
+def prepare_split_data():
+    return df_split
