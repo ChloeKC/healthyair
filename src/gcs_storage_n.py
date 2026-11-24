@@ -6,7 +6,7 @@
 #   2. Configures GCP authentication and project settings.
 #   3. Creates a Google Cloud Storage (GCS) bucket if none exists.
 #   4. Downloads the raw UCI Air Quality CSV and stores it in GCS.
-#   5. Creates chronological stratified train/dev/test datasets and 8-fold cross-validation splits.
+#   5. Creates chronological train/dev/test datasets and 8-fold cross-validation splits.
 #   6. Stores the resulting shards back in GCS.
 #   7. Loads the raw data into BigQuery, with an optional PostgreSQL/Cloud SQL path.
 #   8. Verifies the bucket contents and reads a shard directly from GCS with Pandas.
@@ -225,7 +225,7 @@ def create_chronological_splits(
         (df_split["Target_Datetime"] <= eval_boundary)
     ].copy()
 
-    # Testing: features and target must remain in testing period
+    # Testing: features and target must remain in developement period
     test_df = df_split[
         (df_split["Datetime"] > eval_boundary)
     ].copy()
