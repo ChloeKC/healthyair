@@ -148,7 +148,7 @@ Seaborn: 0.13.2
 statsmodels: 0.15.0
 
 
-### Option 1 — Python Virtual Environment
+### Python Virtual Environment
 
 1. Open a terminal in the project folder:
 
@@ -171,6 +171,15 @@ statsmodels: 0.15.0
 5. Start JupyterLab
 
    jupyter lab
+
+6. In shell, cp .env.example .env
+
+7. Create a Google Cloud Project.
+   Create a Google Cloud Storage bucket.
+   Copy .env.example to .env.
+   
+   Update:
+   PROJECT_ID=your-project-id BUCKET_NAME=your-bucket-name LOCATION=EU
 
 
 ### Option 2 — Conda
@@ -205,18 +214,13 @@ statsmodels: 0.15.0
    
    print(sys.executable)
 
-**Conda environment:**
+8. In shell, cp .env.example .env
 
-healthy_air
-Package Versions:
-Python 3.14.7
-NumPy 2.5.3
-Pandas 3.0.6
-Matplotlib 3.11.1
-Scikit-learn 1.9.1
-SciPy 1.18.1
-JupyterLab 4.6.4
-IPykernel 7.3.0
+9. Create a Google Cloud Project.
+   Create a Google Cloud Storage bucket.
+   Copy .env.example to .env.
+   Update:
+   PROJECT_ID=your-project-id BUCKET_NAME=your-bucket-name LOCATION=EU
 
 ### Google Cloud
 
