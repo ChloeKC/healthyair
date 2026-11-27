@@ -22,9 +22,15 @@ print("Google Cloud Storage imported successfully")
 # Healthy Air Project GCS Configuration
 # ---------------------------------------------------------------------
 
-PROJECT_ID = "healthy-air-analysis"
-BUCKET_NAME = "uci_air_quality_20119102"
-LOCATION = "EU"
+from src.config import (
+    PROJECT_ID,
+    BUCKET_NAME,
+    LOCATION
+)
+
+#PROJECT_ID = "healthy-air-analysis"
+#BUCKET_NAME = "uci_air_quality_20119102"
+#LOCATION = "EU"
 
 print(f"Project: {PROJECT_ID}")
 print(f"Bucket: gs://{BUCKET_NAME}")
